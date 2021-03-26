@@ -40,6 +40,15 @@ export function TaskList() {
     }
   }
 
+  function handleRemoveTask(id: number) {
+    const task = tasks.find(task => task.id === id);
+    
+    if (task) {
+      const newTasks = tasks.filter(task => task.id !== id);
+      setTasks([...newTasks]);
+    }
+  }
+
   return (
     <section className="task-list container">
       <header>
