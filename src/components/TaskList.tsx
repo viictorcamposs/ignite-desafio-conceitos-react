@@ -26,6 +26,20 @@ export function TaskList() {
     setNewTaskTitle('');
   }
 
+  function handleToggleTaskCompletion(id: number) {
+    const task = tasks.find(task => task.id === id);
+
+    if (task) {
+      const newTask: Task = {
+        ...task,
+        isComplete: true,
+      };
+      
+      const newTasks = tasks.filter(task => task.id !== id);
+      setTasks([...newTasks, newTask]);
+    }
+  }
+
   return (
     <section className="task-list container">
       <header>
